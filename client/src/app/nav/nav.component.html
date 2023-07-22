@@ -1,24 +1,26 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
   <div class="container">
 
-    <button mat-button mat-raised-button>Dating App</button>
+    <button mat-button mat-raised-button routerLink="/" routerLinkActive="active" routerLinkActive="active">Dating
+      App</button>
 
-    <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="currentUser$ | async">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Matches</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">List</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">Messages</a>
-      </li>
-      <li class="nav-item" (click)="logout()">
-        <a class="nav-link">Logout</a>
-      </li>
+    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+      <ng-container *ngIf="currentUser$ | async">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/members" routerLinkActive="active">Matches</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/lists" routerLinkActive="active">List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
+        </li>
+      </ng-container>
+
+
     </ul>
 
-    <button mat-button [matMenuTriggerFor]="menu" mat-raised-button *ngIf="currentUser$ | async" >Welcome user</button>
+    <button mat-button [matMenuTriggerFor]="menu" mat-raised-button *ngIf="(currentUser$ | async) as user">Welcome {{user.userName | titlecase}}</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>Edit Profile</button>
       <button mat-menu-item (click)="logout()">Logout</button>
@@ -28,7 +30,7 @@
       <input name="userName" [(ngModel)]="model.userName" class="form-control me-2" type="text" placeholder="UserName">
       <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="password"
         placeholder="Password">
-      <button class="btn btn-outline-success" type="submit">Login</button>
+      <button class="btn btn-success" type="submit">Login</button>
     </form>
 
   </div>
