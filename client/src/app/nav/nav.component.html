@@ -15,12 +15,16 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
         </li>
-      </ng-container>
 
+      </ng-container>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/errors" routerLinkActive="active">Errors</a>
+      </li>
 
     </ul>
 
-    <button mat-button [matMenuTriggerFor]="menu" mat-raised-button *ngIf="(currentUser$ | async) as user">Welcome {{user.userName | titlecase}}</button>
+    <button mat-button [matMenuTriggerFor]="menu" mat-raised-button *ngIf="(currentUser$ | async) as user">Welcome
+      {{user.userName | titlecase}}</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>Edit Profile</button>
       <button mat-menu-item (click)="logout()">Logout</button>
