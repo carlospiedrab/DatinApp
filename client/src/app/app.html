@@ -1,8 +1,5 @@
-
 <app-nav />
-
-
-<app-home />
-
-
-<router-outlet />
+<!-- <div [class.mt-24]="router.url !== '/'" [class.container]="router.url !== '/'" [class.mt-auto]="router.url !== '/'" -->
+<div class="mt-24 bg-base-200">
+  <router-outlet />
+</div>
